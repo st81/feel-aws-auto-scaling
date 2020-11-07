@@ -14,8 +14,15 @@ app.get("/", (req, res) => {
 })
 
 app.post("/ab", async (req, res) => {
-  const results = await execAb(req.body)
-  res.send(results)
+  try {
+    const results = await execAb(req.body)
+    res.send(results)
+  } catch(e) {
+    res.send(`
+      Api server stopped. Something happened...
+      Reason: ${e}
+    `)
+  }
 })
 
 app.listen(port, () => {

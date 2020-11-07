@@ -16,8 +16,6 @@ const execAb = ({requests, concurrency, serverUrl}) => {
       }
       if (stderr) {
         console.log(`stderr: ${stderr}`);
-        reject(stderr)
-        return
       }
       resolve(stdout)
     })
