@@ -21,6 +21,7 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
       - run:
           working_directory: backend
           command: |
+            npm install --save-dev jest
             npm run test
 # Under the workflows: map, we can coordinate our two jobs, defined above.
 workflows:
