@@ -1,9 +1,11 @@
 const express = require("express")
+const cors = require('cors')
 const app = express()
 const url = require('./config.json').apiServerUrl
 const port = require('./config.json').apiServerPort
 const execAb = require("./execAb")
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 
