@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DisplayAbResults from './DisplayAbResults'
 import axios from 'axios';
 const apiServerUrl = require('./config.json').apiServerUrl
 const apiServerPort = require('./config.json').apiServerPort
@@ -8,6 +9,8 @@ const autoScalingServerPort = require('./config.json').autoScalingServerPort
 function ExecuteAb() {
     const [numberOfRequestsAb, setNumberOfRequestsAb] = useState('');
     const [numberOfConcurrencyAb, setNumberOfConcurrencyAb] = useState('');
+    const [isFinish, setIsFinish] = useState(false)
+    const [abResults, setAbResults] = useState('')
 
     return (
         <div>
@@ -34,11 +37,20 @@ function ExecuteAb() {
                     }
 
                     axios.post(`${apiServerUrl}:${apiServerPort}/ab`, req)
-                        .then(res => alert(res.data))
+                        .then(res => {
+                            setIsFinish(true)
+                            setAbResults(res.data)
+                            })
                         .catch(e => alert(e))
                 }}>
                 Run!
             </button>
+
+            
+            <DisplayAbResults
+                isFinish={isFinish}
+                abResults={abResults}
+            />
         </div>
     )
 }
