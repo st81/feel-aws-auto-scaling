@@ -9,8 +9,7 @@ const autoScalingServerPort = require('./config.json').autoScalingServerPort
 function ExecuteAb() {
     const [numberOfRequestsAb, setNumberOfRequestsAb] = useState('');
     const [numberOfConcurrencyAb, setNumberOfConcurrencyAb] = useState('');
-    const [isFinish, setIsFinish] = useState(false)
-    const [abResults, setAbResults] = useState('')
+    const [abResults, setAbResults] = useState('Type number of requests and concurrency then press Run!')
 
     return (
         <div>
@@ -30,6 +29,7 @@ function ExecuteAb() {
             />
             <button
                 onClick={() => {
+                    setAbResults('Running...')
                     let req = {
                         requests: numberOfRequestsAb,
                         concurrency: numberOfConcurrencyAb,
@@ -38,7 +38,6 @@ function ExecuteAb() {
 
                     axios.post(`${apiServerUrl}:${apiServerPort}/ab`, req)
                         .then(res => {
-                            setIsFinish(true)
                             setAbResults(res.data)
                             })
                         .catch(e => alert(e))
@@ -48,7 +47,6 @@ function ExecuteAb() {
 
             
             <DisplayAbResults
-                isFinish={isFinish}
                 abResults={abResults}
             />
         </div>
