@@ -12,7 +12,5 @@ jobs:
           working_directory: backend
           command: |
             npm install --production
-      - run: 
-          working_directory: backend
-          command: |
+            npm run start
             npm run test
