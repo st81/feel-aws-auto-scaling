@@ -1,6 +1,6 @@
 {
     "apiServerUrl": "http://localhost",
     "apiServerPort": 4000,
-    "autoScalingServerUrl": "http://localhost",
-    "autoScalingServerPort": 4000
+    "autoScalingServerUrl": "http://ec2co-ecsel-shuqf5jm7ycl-1032169985.ap-northeast-1.elb.amazonaws.com",
+    "autoScalingServerPort": 8080
 }
