@@ -8,12 +8,10 @@ jobs:
       tag: '10.4'
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: 
-                working_directory: backend
-                command: |
-                  npm install --production
+      - run: 
+          working_directory: backend
+          command: |
+            npm install --production
       - run: 
           working_directory: backend
           command: |
