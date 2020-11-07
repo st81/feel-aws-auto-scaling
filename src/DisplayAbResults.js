@@ -7,6 +7,7 @@ function DisplayAbResults(props) {
                 <textarea
                     className="display-ab-results"
                     value={props.abResults}
+                    readOnly
                     rows="50"
                     cols="90">
                 </textarea>
