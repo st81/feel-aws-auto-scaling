@@ -12,4 +12,7 @@ jobs:
           working_directory: backend
           command: |
             npm install
+      - run: 
+          working_directory: backend
+          command: |
             npm run test
