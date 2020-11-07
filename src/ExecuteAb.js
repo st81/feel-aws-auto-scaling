@@ -1,26 +1,42 @@
 import { useState } from 'react';
+import axios from 'axios';
+const apiServerUrl = require('./config.json').apiServerUrl
+const apiServerPort = require('./config.json').apiServerPort
+const autoScalingServerUrl = require('./config.json').autoScalingServerUrl
+const autoScalingServerPort = require('./config.json').autoScalingServerPort
 
 function ExecuteAb() {
-    const [numberOfRequestsAb, setNumberOfRequestsAb] = useState();
-    const [numberOfConcurrencyAb, setNumberOfConcurrencyAb] = useState();
+    const [numberOfRequestsAb, setNumberOfRequestsAb] = useState('');
+    const [numberOfConcurrencyAb, setNumberOfConcurrencyAb] = useState('');
 
     return (
         <div>
-            <input 
+            <input
                 className="number-of-request-ab"
                 type="text"
                 placeholder="number of request"
                 value={numberOfRequestsAb}
                 onChange={(e) => setNumberOfRequestsAb(e.target.value)}
             />
-            <input 
+            <input
                 className="number-of-concurrency-ab"
                 type="text"
                 placeholder="number of concurrency"
                 value={numberOfConcurrencyAb}
                 onChange={(e) => setNumberOfConcurrencyAb(e.target.value)}
             />
-            <button onClick={() => alert('http://localhost:5000/ab')}>
+            <button
+                onClick={() => {
+                    let req = {
+                        requests: numberOfRequestsAb,
+                        concurrency: numberOfConcurrencyAb,
+                        serverUrl: `${autoScalingServerUrl}:${autoScalingServerPort}/`,
+                    }
+
+                    axios.post(`${apiServerUrl}:${apiServerPort}/ab`, req)
+                        .then(res => alert(res.data))
+                        .catch(e => alert(e))
+                }}>
                 Run!
             </button>
         </div>
