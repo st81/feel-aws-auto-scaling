@@ -9,8 +9,11 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
     # Steps are a list of commands to run inside the docker container above.
     steps:
       - checkout # this pulls code down from GitHub
-      - run: echo "A first hello" # This prints "A first hello" to stdout.
-      - run: sleep 25 # a command telling the job to "sleep" for 25 seconds.
+      - run: 
+          working_directory: backend
+          command: |
+            npm install
+            npm list | grep jest
 # Under the workflows: map, we can coordinate our two jobs, defined above.
 workflows:
   version: 2
