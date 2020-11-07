@@ -1,13 +1,14 @@
 const express = require("express")
 const app = express()
-const port = 3000
+const url = require('./config.json').apiServerUrl
+const port = require('./config.json').apiServerPort
 const execAb = require("./execAb")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 
 app.get("/", (req, res) => {
-  res.send("Hello world\n")
+  res.send("I'm server to execute AB\n")
 })
 
 app.post("/ab", async (req, res) => {
@@ -16,5 +17,5 @@ app.post("/ab", async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`listening at http://localhost:3000`)
+  console.log(`listening at ${url}:${port}`)
 })

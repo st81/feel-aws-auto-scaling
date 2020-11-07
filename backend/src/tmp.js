@@ -1,14 +1,16 @@
 const axios = require("axios")
-const endPoint = "http://localhost:3000/"
-const sampleServerUrl = "http://localhost:3000/"
+const apiServerUrl = require('./config.json').apiServerUrl
+const apiServerPort = require('./config.json').apiServerPort
+const autoScalingServerUrl = require('./config.json').autoScalingServerUrl
+const autoScalingServerPort = require('./config.json').autoScalingServerPort
 
 let req = {
   requests: 10,
   concurrency: 10
 }
-req["serverUrl"] = sampleServerUrl
+req["serverUrl"] = `${autoScalingServerUrl}:${autoScalingServerPort}/`
 
-axios.post(`${endPoint}ab`, req)
+axios.post(`${apiServerUrl}:${apiServerPort}/ab`, req)
   .then(res => {
     console.log(res.data)
   })

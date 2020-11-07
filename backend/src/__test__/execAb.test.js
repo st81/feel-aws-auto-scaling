@@ -1,4 +1,6 @@
-const serverUrl = "http://localhost:3000/"
+const autoScalingServerUrl = require('../config.json').autoScalingServerUrl
+const autoScalingServerPort = require('../config.json').autoScalingServerPort
+const serverUrl = `${autoScalingServerUrl}:${autoScalingServerPort}/`
 const execAb = require("../execAb")
 
 test("Can execute ab with request and concurrency params", async () => {
