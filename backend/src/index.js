@@ -4,6 +4,8 @@ const app = express()
 const url = require('./config.json').apiServerUrl
 const port = require('./config.json').apiServerPort
 const execAb = require("./execAb")
+const extractAbTakenTime = require('./extractAbTakenTime')
+const insertAbResults = require('./insertAbResults')
 
 app.use(cors())
 app.use(express.json())
@@ -16,6 +18,8 @@ app.get("/", (req, res) => {
 app.post("/ab", async (req, res) => {
   try {
     const results = await execAb(req.body)
+    const takenTime = extractAbTakenTime(results)
+    insertAbResults(req.body.requests, req.body.concurrency, takenTime)
     res.send(results)
   } catch(e) {
     res.send(`
