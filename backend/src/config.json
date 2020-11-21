@@ -1,6 +1,0 @@
-{
-    "apiServerUrl": "http://localhost",
-    "apiServerPort": 4000,
-    "autoScalingServerUrl": "http://localhost",
-    "autoScalingServerPort": 4000
-}
