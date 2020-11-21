@@ -1,3 +1,7 @@
 # dependencies
 /node_modules
 test_pipe.js
+config.json
+docker-compose.yml
+/db
+/extract-data-from-db
