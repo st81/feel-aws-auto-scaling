@@ -24,8 +24,8 @@ app.post("/ab", async (req, res) => {
     res.send(results)
   } catch(e) {
     res.send(`
-      Api server stopped. Something happened...
-      Reason: ${e}
+      Some error is happened.
+      Detail: ${e}
     `)
   }
 })
