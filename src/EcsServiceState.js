@@ -36,7 +36,7 @@ function EcsServiceState(props) {
             <div className="ecs-service-state-contents">
                 <p id="ecs-service-state-desired-count" className="ecs-service-state-desired-count">
                     <span className="ecs-service-state-desired-count-label">
-                        Desired count: 
+                        Desired count:
                     </span>
                     {ecsServiceState.desiredCount}
                 </p>
@@ -48,7 +48,7 @@ function EcsServiceState(props) {
                 </p>
                 <p id="ecs-service-state-running-count" className="ecs-service-state-running-count">
                     <span className="ecs-service-state-running-count-label">
-                        Running count: 
+                        Running count:
                     </span>
                     {ecsServiceState.runningCount}
                 </p>
