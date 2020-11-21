@@ -1,0 +1,19 @@
+.ecs-service-state-title {
+    font-size: 24px;
+    padding-right: 15px;
+}
+.ecs-service-state-contents {
+    margin-left: 20px;
+}
+.ecs-service-state-desired-count-label {
+    padding-right: 6px;
+    font-weight: bold;
+}
+.ecs-service-state-pending-count-label {
+    padding-right: 6px;
+    font-weight: bold;
+}
+.ecs-service-state-running-count-label {
+    padding-right: 6px;
+    font-weight: bold;
+}
