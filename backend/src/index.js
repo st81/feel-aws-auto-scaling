@@ -6,6 +6,7 @@ const port = require('./config.json').apiServerPort
 const execAb = require("./execAb")
 const extractAbTakenTime = require('./extractAbTakenTime')
 const insertAbResults = require('./insertAbResults')
+const describeAutoScalingEcsService = require('./describeAutoScalingEcsService')
 
 app.use(cors())
 app.use(express.json())
@@ -25,6 +26,18 @@ app.post("/ab", async (req, res) => {
     res.send(`
       Api server stopped. Something happened...
       Reason: ${e}
+    `)
+  }
+})
+
+app.get("/describeAutoScalingEcsService", async (req, res) => {
+  try {
+    const data = await describeAutoScalingEcsService()
+    res.send(data)
+  } catch(e) {
+    res.send(`
+    Some error is happened.
+    Detail: ${e}
     `)
   }
 })
