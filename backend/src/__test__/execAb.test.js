@@ -14,11 +14,11 @@ test("Can execute ab with request and concurrency params", async () => {
 test("Return caution with minus request", async () => {
   const requests = -1
   const concurrency = 10
-  await expect(execAb({requests, concurrency, serverUrl})).toBe('requests must greater than 0')
+  await expect(execAb({requests, concurrency, serverUrl})).rejects.toBe('requests must greater than 0')
 })
 
 test("Return caution with minus concurrency", async () => {
   const requests = 10
   const concurrency = -1
-  await expect(execAb({requests, concurrency, serverUrl})).toBe('concurrency must greater than 0')
+  await expect(execAb({requests, concurrency, serverUrl})).rejects.toBe('concurrency must greater than 0')
 })
