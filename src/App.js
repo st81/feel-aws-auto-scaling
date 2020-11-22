@@ -3,14 +3,14 @@ import Header from './Header'
 import ExecuteAb from './ExecuteAb'
 import DisplayAutoScalingState from './DisplayAutoScalingState'
 import EcsServiceState from './EcsServiceState'
-import EcsServiceMetrics from './EcsServiceMetrics'
+import AutoScalingEcsServiceMetrics from './AutoScalingEcsServiceMetrics'
 
 function App() {
     return (
         <div>
             <Header />
             <DisplayAutoScalingState autoScalingState={'Not started'} />
-            <EcsServiceMetrics />
+            <AutoScalingEcsServiceMetrics />
             <EcsServiceState />
             <ExecuteAb />
         </div>
