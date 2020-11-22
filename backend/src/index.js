@@ -7,6 +7,7 @@ const execAb = require("./execAb")
 const extractAbTakenTime = require('./extractAbTakenTime')
 const insertAbResults = require('./insertAbResults')
 const describeAutoScalingEcsService = require('./describeAutoScalingEcsService')
+const getAutoScalingEcsServiceMetrics = require('./getAutoScalingEcsServiceMetrics')
 
 app.use(cors())
 app.use(express.json())
@@ -38,6 +39,18 @@ app.get("/describeAutoScalingEcsService", async (req, res) => {
     res.send(`
     Some error is happened.
     Detail: ${e}
+    `)
+  }
+})
+
+app.get("/autoScalingEcsServiceMetrics", async (req, res) => {
+  try {
+    const data = await getAutoScalingEcsServiceMetrics(req.query.startTime, req.query.endTime)
+    res.send(data)
+  } catch(e) {
+    res.send(`
+      Some error is happened.
+      Detail: ${e}
     `)
   }
 })
