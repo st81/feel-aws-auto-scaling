@@ -30,7 +30,7 @@ function EcsServiceState(props) {
                                 setEcsServiceState(res.data)
                             })
                     }}>
-                    Update
+                    Update state
                 </button>
             </div>
             <div className="ecs-service-state-contents">
