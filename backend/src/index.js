@@ -20,8 +20,9 @@ app.get("/", (req, res) => {
 app.post("/ab", async (req, res) => {
   try {
     const results = await execAb(req.body)
+    const ecsServiceData = await describeAutoScalingEcsService()
     const takenTime = extractAbTakenTime(results)
-    insertAbResults(req.body.requests, req.body.concurrency, takenTime)
+    insertAbResults(req.body.requests, req.body.concurrency, ecsServiceData.runningCount, takenTime)
     res.send(results)
   } catch(e) {
     res.send(`

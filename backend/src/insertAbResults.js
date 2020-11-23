@@ -1,4 +1,4 @@
-const insertAbResults = (requests, concurrency, takenTime) => {
+const insertAbResults = (requests, concurrency, runningCount, takenTime) => {
   let results = null;
 
   const mysql = require("mysql");
@@ -13,9 +13,11 @@ const insertAbResults = (requests, concurrency, takenTime) => {
   connection.connect();
 
   const query = `
-    INSERT INTO ab_results (number_of_requests, number_of_concurrency, taken_time) VALUES (?, ?, ?)
+    INSERT INTO ab_results 
+      (number_of_requests, number_of_concurrency, number_of_ecs_tasks, taken_time)
+      VALUES (?, ?, ?, ?)
   `;
-  connection.query(query, [requests, concurrency, takenTime], function (
+  connection.query(query, [requests, concurrency, runningCount, takenTime], function (
     error,
     results,
     fields
