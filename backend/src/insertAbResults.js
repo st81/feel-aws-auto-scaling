@@ -2,7 +2,6 @@ const insertAbResults = (requests, concurrency, runningCount, takenTime) => {
   let results = null;
 
   const mysql = require("mysql");
-  console.log(process.env.MYSQL_PASSWORD);
   const connection = mysql.createConnection({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
