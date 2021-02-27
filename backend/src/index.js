@@ -12,9 +12,9 @@ const getAutoScalingEcsServiceMetrics = require('./getAutoScalingEcsServiceMetri
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
-
+app.disable('etag');
 app.get("/", (req, res) => {
-  res.send("I'm server to execute AB\n")
+  res.status(200).send("I'm server to execute AB\n")
 })
 
 app.post("/ab", async (req, res) => {
